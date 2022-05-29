@@ -36,7 +36,7 @@ It is also called optimal string alignment distance.
 
 
 
-## How to use
+# How to use
 
 ```vim
 echo levenshtein#levenshtein_distance('ab', 'abc')
@@ -47,9 +47,17 @@ let g:osa_distance = g:ld.ristricted_damerau_levenshtein_distance
 echo g:osa_distance('abc', 'bac')
 ```
 
----
+
+
+# References
 
  - https://en.wikipedia.org/wiki/Levenshtein_distance
  - https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance
  - Heikki Hyyrö, "A Bit-Vector Algorithm for Computing Levenshtein and Damerau Edit Distances", Journal Nordic Journal of Computing 10, 29-39, 2003
  - Heikki Hyyrö, "Explaining and Extending the Bit-parallel Approximate String Matching Algorithm of Myers", Technical report A2001-10 of the Department of Computer and Information Sciences, University of Tampere, 2001
+
+
+
+# Links
+
+https://machakann.hatenablog.com/entry/2022/05/29/194628

@@ -1,6 +1,8 @@
 vim-levenshtein
 ===============
 
+[![Test](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml/badge.svg)](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml)
+
 This is a library plugin to calculate Levenshtein and its variant, ristricted Damerau-Levenshtein distance.
 
 Levenshtein distance is a sort of edit distances.

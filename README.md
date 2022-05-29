@@ -1,6 +1,7 @@
 vim-levenshtein
 ===============
 
+[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![Test](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml/badge.svg)](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml)
 
 This is a library plugin to calculate Levenshtein and its variant, ristricted Damerau-Levenshtein distance.

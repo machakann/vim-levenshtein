@@ -1,0 +1,82 @@
+levenshtein.txt		A library to calculate Levenshtein distance
+
+
+Author  : machakann <mckn{at}outlook.jp>
+License : CC0
+
+==============================================================================
+INTRODUCTION				*levenshtein-introduction*
+
+This is a library plugin to calculate Levenshtein and its variant,
+ristricted Damerau-Levenshtein distance.
+
+Levenshtein distance is a sort of edit distances. It is defind as a minimum
+count to equate two strings by three kinds of operations.
+
+ 1. character-wise addition		a  -> ab
+ 2. character-wise deletion		ab -> a
+ 3. character-wise substitution		a  -> b
+
+For example, the Levenshtein distance between "a" and "ab" is 1, since an
+addition of "b" makes the former equal as the latter. Conversely, "ab" can be
+equated by a deletion of "b", therefore it is 1 as same. Similarly, the
+Levenshtein distance between "ab" and "ac" is 1, because a substitution of "b"
+with "c" make them equal.
+
+Damerau-Levenshtein distance is a variant of the Levenshtein distance. It
+accepts one additional operation.
+
+ 4. character-wise transposition	ab -> ba
+
+The Damerau-Levenshtein distance of "abc" and "acb" is 1 since a transposition
+of "b" and "c" make them equal, while the Levenshtein distance is 2 since two
+substitution is necessary.
+
+Note that this library cannot follow the above rule of the Damerau-Levenshtein
+distance strictly. There is a limitation for the fourth operation; only a
+transposition between two successive characters are allowed.
+
+ 4'. character-wise transposition between two successive characters
+
+	Allowed				abc -> bac
+	Not allowed			abc -> cba
+
+The ristricted Damerau-Levenshtein distance between "abc" and "cba" is 2 since
+two substitution, "a" to "c" and "c" to "a", is necessary, while those
+(unristricted) Damerau-Levenshtein distance is 1 since a transposition of the
+first "a" and the third "c" does the job. That's the reason why the function
+is called "ristricted" Damerau-Levenshtein distance. It is also called optimal
+string alignment distance.
+
+==============================================================================
+FUCNTIONS				*levenshtein-functions*
+
+					*levenshtein#levenshtein_distance()*
+levenshtein#levenshtein_distance(A, B)
+	Calculate the Levenshtein distance between two |String|s A and B.
+
+
+			*levenshtein#ristricted_damerau_levenshtein_distance()*
+levenshtein#ristricted_damerau_levenshtein_distance(A, B)
+	Calculate the ristricted Damerau-Levenshtein distance, a.k.a. oprimal
+	string alignment distance, between two |String|s A and B.
+
+
+					*levenshtein#import()*
+levenshtein#import()
+	Return a dictionary of |Funcref|s. The keys are listed below.
+
+	  levenshtein_distance(A, B)
+		Same as |levenshtein#levenshtein_distance()|
+
+	  ristricted_damerau_levenshtein_distance(A, B)
+		Same as |levenshtein#ristricted_damerau_levenshtein_distance()|
+>
+	let g:ld = levenshtein#import()
+	echo g:ld.levenshtein_distance('ab', 'abc')
+
+	let g:osa_distance = g:ld.ristricted_damerau_levenshtein_distance
+	echo g:osa_distance('abc', 'bac')
+<
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:

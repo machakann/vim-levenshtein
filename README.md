@@ -20,18 +20,24 @@ Similarly, the Levenshtein distance between `ab` and `ac` is 1, because a substi
 Damerau-Levenshtein distance is a variant of the Levenshtein distance.
 It accepts one additional operation.
 
- 4. character-wise transposition	`ab -> ba`
+ 4. character-wise transposition of two adjacent characters	`ab -> ba`
 
 The Damerau-Levenshtein distance of `abc` and `acb` is 1 since a transposition of `b` and `c` make them equal, while the Levenshtein distance is 2 since two substitution is necessary.
 
 Note that this library cannot follow the above rule of the Damerau-Levenshtein distance strictly.
 There is a limitation for the fourth operation; only a transposition between two successive characters are allowed.
 
- 4. character-wise transposition between two successive characters
-    - Allowed		`abc -> bac`
-    - Not allowed	`abc -> cba`
 
-The ristricted Damerau-Levenshtein distance between `abc` and `cba` is 2 since two substitution, `a` to `c` and `c` to `a`, is necessary, while those (unristricted) Damerau-Levenshtein distance is 1 since a transposition of the first `a` and the third `c` does the job.
+Note that this library cannot follow the above rule of the Damerau-Levenshtein distance strictly.
+There is a limitation for the four operations; these operations cannot backtrack.
+Think on the distance between "abc" and "bca".
+The (unristricted) Damerau-Levenshtein distance is 2 since a transpositions and an addition does the job.
+However, the second operation has to insert a character behind the last edited character "c".
+The ristricted Damerau-Levenshtein distance does not allow this operation and therefore results in 3 with three substitution.
+
+    - Unristricted	ca -> ac -> abc
+    - Ristricted	ca -> aa -> ab -> abc
+
 That's the reason why the function is called **ristricted** Damerau-Levenshtein distance.
 It is also called optimal string alignment distance.
 

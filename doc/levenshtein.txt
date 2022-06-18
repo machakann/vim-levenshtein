@@ -7,18 +7,18 @@ License : CC0
 ==============================================================================
 INTRODUCTION				*levenshtein-introduction*
 
-This is a library plugin to calculate Levenshtein and its variant,
+This is a library plugin to calculate Levenshtein distance and its variant,
 ristricted Damerau-Levenshtein distance.
 
 Levenshtein distance is a sort of edit distances. It is defind as a minimum
-count to equate two strings by three kinds of operations.
+count to equate two strings by using three kinds of operations.
 
  1. character-wise addition		a  -> ab
  2. character-wise deletion		ab -> a
  3. character-wise substitution		a  -> b
 
 For example, the Levenshtein distance between "a" and "ab" is 1, since an
-addition of "b" makes the former equal as the latter. Conversely, "ab" can be
+addition of "b" makes the former equal to the latter. Conversely, "ab" can be
 equated by a deletion of "b", therefore it is 1 as same. Similarly, the
 Levenshtein distance between "ab" and "ac" is 1, because a substitution of "b"
 with "c" make them equal.

@@ -4,16 +4,16 @@ vim-levenshtein
 [![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![Test](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml/badge.svg)](https://github.com/machakann/vim-levenshtein/actions/workflows/test.yml)
 
-This is a library plugin to calculate Levenshtein and its variant, ristricted Damerau-Levenshtein distance.
+This is a library plugin to calculate Levenshtein distance and its variant, ristricted Damerau-Levenshtein distance.
 
 Levenshtein distance is a sort of edit distances.
-It is defind as a minimum count to equate two strings by three kinds of operations.
+It is defind as a minimum count to equate two strings by using three kinds of operations.
 
  1. character-wise addition		`a  -> ab`
  2. character-wise deletion		`ab -> a`
  3. character-wise substitution		`a  -> b`
 
-For example, the Levenshtein distance between `a` and `ab` is 1, since an addition of `b` makes the former equal as the latter.
+For example, the Levenshtein distance between `a` and `ab` is 1, since an addition of `b` makes the former equal to the latter.
 Conversely, `ab` can be equated by a deletion of `b`, therefore it is 1 as same.
 Similarly, the Levenshtein distance between `ab` and `ac` is 1, because a substitution of `b` with `c` make them equal.
 
@@ -23,10 +23,6 @@ It accepts one additional operation.
  4. character-wise transposition of two adjacent characters	`ab -> ba`
 
 The Damerau-Levenshtein distance of `abc` and `acb` is 1 since a transposition of `b` and `c` make them equal, while the Levenshtein distance is 2 since two substitution is necessary.
-
-Note that this library cannot follow the above rule of the Damerau-Levenshtein distance strictly.
-There is a limitation for the fourth operation; only a transposition between two successive characters are allowed.
-
 
 Note that this library cannot follow the above rule of the Damerau-Levenshtein distance strictly.
 There is a limitation for the four operations; these operations cannot backtrack.

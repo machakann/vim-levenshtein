@@ -31,7 +31,7 @@ def SubLevenshteinDistance(Astr: string, Bstr: string): number
   const Alen = len(A)
   const Blen = len(B)
   const nmax = max([Alen, Blen])
-  var d = nmax > dmax ? Distancemap(nmax) : copy(distancemap)
+  var d = nmax > dmax ? Distancemap(nmax) : deepcopy(distancemap)
   for i in range(1, Alen)
     for j in range(1, Blen)
       var inc = A[i - 1] == B[j - 1] ? 0 : 1
@@ -64,7 +64,7 @@ def SubRistrictedDamerauLevenshteinDistance(Astr: string, Bstr: string): number
   const Alen = len(A)
   const Blen = len(B)
   const nmax = max([Alen, Blen])
-  var d = nmax > dmax ? Distancemap(nmax) : copy(distancemap)
+  var d = nmax > dmax ? Distancemap(nmax) : deepcopy(distancemap)
   for i in range(1, Alen)
     for j in range(1, Blen)
       var inc = A[i - 1] == B[j - 1] ? 0 : 1

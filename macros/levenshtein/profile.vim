@@ -1,3 +1,12 @@
+try
+  call levenshtein#import()
+catch /^Vim\%((\a\+)\)\=:E117:/
+  let s:__ROOT__ = expand('<sfile>:h:h:h')
+  execute 'set runtimepath^=' . s:__ROOT__
+endtry
+
+import '../../autoload/levenshtein/bitparallel_vim9.vim'
+import '../../autoload/levenshtein/dynamic_vim9.vim'
 let s:dynamic = levenshtein#dynamic#import()
 let s:bitparallel = levenshtein#bitparallel#import()
 let s:bitparallel_obsolete = levenshtein#bitparallel_obsolete#import()
@@ -77,10 +86,14 @@ function! s:profile(n) abort
   let result_dynamic = s:profile_func(s:dynamic.levenshtein_distance, l:A, l:B, a:n)
   let result_bitparallel_obsolete = s:profile_func(s:bitparallel_obsolete.levenshtein_distance, l:A, l:B, a:n)
   let result_bitparallel = s:profile_func(s:bitparallel.levenshtein_distance, l:A, l:B, a:n)
+  let result_dynamic_vim9 = s:profile_func(s:dynamic_vim9.LevenshteinDistance, l:A, l:B, a:n)
+  let result_bitparallel_vim9 = s:profile_func(s:bitparallel_vim9.LevenshteinDistance, l:A, l:B, a:n)
   echomsg printf('evaluated %d times', a:n)
   echomsg s:output_line('dynamic programming:', result_dynamic)
   echomsg s:output_line('bit-parallel (obsolete):', result_bitparallel_obsolete)
   echomsg s:output_line('bit-parallel:', result_bitparallel)
+  echomsg s:output_line('dynamic (vim9):', result_dynamic_vim9)
+  echomsg s:output_line('bit-parallel (vim9):', result_bitparallel_vim9)
 endfunction
 
 call s:profile(1000)

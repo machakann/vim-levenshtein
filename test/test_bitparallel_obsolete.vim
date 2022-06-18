@@ -1,6 +1,6 @@
 scriptencoding utf-8
 let s:assert = themis#helper('assert')
-let s:suite = themis#suite('bit-parallel:')
+let s:suite = themis#suite('bit-parallel(obsolete):')
 let s:bpo = levenshtein#bitparallel_obsolete#import()
 
 

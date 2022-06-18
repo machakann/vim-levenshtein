@@ -1,6 +1,6 @@
 scriptencoding utf-8
 let s:assert = themis#helper('assert')
-let s:suite = themis#suite('dynamic-programming')
+let s:suite = themis#suite('dynamic-programming:')
 let s:dp = levenshtein#dynamic#import()
 
 
